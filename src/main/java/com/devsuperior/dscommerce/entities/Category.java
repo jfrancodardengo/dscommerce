@@ -1,6 +1,7 @@
 package com.devsuperior.dscommerce.entities;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -47,6 +48,22 @@ public class Category {
 
   public Set<Product> getProducts() {
     return products;
+  }
+
+  @Override
+  public int hashCode() {    
+    return id != null ? id.hashCode() : 0;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null || getClass() != obj.getClass())
+      return false;    
+    Category category = (Category) obj;
+    
+    return Objects.equals(id, category.id);
   }  
   
 }
