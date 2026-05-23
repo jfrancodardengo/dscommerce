@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.services.ProductService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping(value = "/products")
@@ -29,4 +32,8 @@ public class ProductController {
     return service.findAll(pageable);  
   }
 
+  @PostMapping
+  public ProductDTO insert(@RequestBody ProductDTO dto) {     
+      return service.insert(dto);
+  }
 }
